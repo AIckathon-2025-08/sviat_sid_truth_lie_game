@@ -12,14 +12,11 @@ The "Two Truths and a Lie" game is a classic icebreaker that challenges particip
 - **Remote Teams**: Connect distributed teams through fun challenges
 
 ## 📱 Screenshots
-
-Screenshots will be added to the `screenshots/` directory. See `screenshots/README.md` for details on how to capture and add them.
-
-### Required Screenshots
-- **Homepage**: Showing active games and navigation
-- **Game Creation**: Admin interface for setting up new games
-- **Voting Interface**: Player voting experience with statements
-- **Results Dashboard**: Live results with charts and statistics
+<img width="1553" height="626" alt="Screenshot 2025-08-14 at 17 16 22" src="https://github.com/user-attachments/assets/e48710a9-f65f-40a7-b13c-01fe0c0c5ec5" />
+<img width="1509" height="1036" alt="Screenshot 2025-08-14 at 17 17 16" src="https://github.com/user-attachments/assets/d4d6b041-179c-4b3f-9e32-6d722aa885d7" />
+<img width="1545" height="1030" alt="Screenshot 2025-08-14 at 17 18 10" src="https://github.com/user-attachments/assets/b2a7260d-15fc-45f5-a887-7f21ccfa060e" />
+<img width="1527" height="1032" alt="Screenshot 2025-08-14 at 17 18 27" src="https://github.com/user-attachments/assets/61cc4177-fd44-489a-a961-c1ee1e0845ec" />
+<img width="1479" height="956" alt="Screenshot 2025-08-14 at 17 18 37" src="https://github.com/user-attachments/assets/137155b3-ea02-41e6-ad45-6f66454566e0" />
 
 ## 🎥 Demo Video
 
