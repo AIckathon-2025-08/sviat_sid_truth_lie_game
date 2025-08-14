@@ -21,8 +21,7 @@ The "Two Truths and a Lie" game is a classic icebreaker that challenges particip
 ## 🎥 Demo Video
 Full quality video https://drive.google.com/file/d/1PH0E9LcYALCqq1_SUEldoqmBOjBArte4/view?usp=sharing
 
-![Screen Recording 2025-08-14 at 17 21 14](https://github.com/user-attachments/assets/9da5b1d5-c85a-4220-b5ba-6d4f11f44bb5)
-
+![Screen Recording 2025-08-14 at 17 21 14 (1)](https://github.com/user-attachments/assets/0d0c3431-a60d-4ced-aa2b-58c3f650b66d)
 
 ## ✨ Features
 
