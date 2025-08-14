@@ -1,0 +1,123 @@
+<div class="card">
+  <div class="text-center mb-4">
+    <h1><i class="fas fa-chart-bar"></i> Game Results</h1>
+    <h2><%= @game.candidate_name %></h2>
+    <img src="<%= @game.candidate_photo %>" alt="<%= @game.candidate_name %>" class="candidate-photo">
+    <p class="text-muted mt-3">Game Code: <strong><%= @game.token %></strong></p>
+    <p class="text-muted mt-3">Total Votes: <span class="vote-count"><%= @total_votes %></span></p>
+  </div>
+  
+  <div class="grid grid-3">
+    <% @game.statements.each_with_index do |statement, index| %>
+      <div class="card statement-card <%= statement[:is_truth] ? 'truth' : 'lie' %>">
+        <div class="text-center">
+          <h4>Statement <%= index + 1 %></h4>
+          <p><%= statement[:content] %></p>
+          
+          <div class="mt-3">
+            <% if statement[:is_truth] %>
+              <span class="badge badge-success">
+                <i class="fas fa-check-circle"></i> TRUTH
+              </span>
+            <% else %>
+              <span class="badge badge-danger">
+                <i class="fas fa-times-circle"></i> LIE
+              </span>
+            <% end %>
+          </div>
+          
+          <div class="vote-count mt-3">
+            <%= @game.statement_votes(statement[:id]) %> votes
+          </div>
+          
+          <div class="percentage mt-2">
+            <%= @game.percentage_votes(statement[:id]) %>%
+          </div>
+          
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: <%= @game.percentage_votes(statement[:id]) %>%"></div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  
+  <div class="text-center mt-4">
+    <a href="<%= game_path(@game) %>" class="btn btn-primary">
+      <i class="fas fa-play"></i> Play Game
+    </a>
+    <a href="/" class="btn btn-outline">
+      <i class="fas fa-home"></i> Back to Games
+    </a>
+  </div>
+  
+  <% if @total_votes > 0 %>
+    <div class="card mt-4">
+      <h3 class="text-center mb-3">Voting Summary</h3>
+      <div class="grid grid-2">
+        <div class="text-center">
+          <h4>Most Voted as Lie</h4>
+          <% most_voted = @game.statements.max_by { |s| @game.statement_votes(s[:id]) } %>
+          <p class="vote-count"><%= most_voted[:content] %></p>
+          <p class="text-muted"><%= @game.statement_votes(most_voted[:id]) %> votes</p>
+        </div>
+        <div class="text-center">
+          <h4>Least Voted as Lie</h4>
+          <% least_voted = @game.statements.min_by { |s| @game.statement_votes(s[:id]) } %>
+          <p class="vote-count"><%= least_voted[:content] %></p>
+          <p class="text-muted"><%= @game.statement_votes(least_voted[:id]) %> votes</p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  
+  <div class="card mt-4">
+    <div class="text-center">
+      <h4>Share This Game</h4>
+      <p class="text-muted">Share the link below with your team to participate:</p>
+      <div class="form-group">
+        <input type="text" value="<%= request.base_url %>/<%= @game.token %>" 
+               class="form-control text-center" readonly onclick="this.select()">
+      </div>
+      <button class="btn btn-info" onclick="navigator.clipboard.writeText('<%= request.base_url %>/<%= @game.token %>')">
+        <i class="fas fa-copy"></i> Copy Link
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+.badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-success {
+  background: var(--success-color);
+  color: white;
+}
+
+.badge-danger {
+  background: var(--danger-color);
+  color: white;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background: var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  transition: width 0.3s ease;
+}
+</style>

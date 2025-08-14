@@ -1,0 +1,81 @@
+<div class="card">
+  <div class="text-center mb-4">
+    <h1><i class="fas fa-gamepad"></i> Truth or Lie Game</h1>
+    <h2><%= @game.candidate_name %></h2>
+    <img src="<%= @game.candidate_photo %>" alt="<%= @game.candidate_name %>" class="candidate-photo">
+    <p class="text-muted mt-3">Game Code: <strong><%= @game.token %></strong></p>
+  </div>
+  
+  <% if @has_voted %>
+    <div class="alert alert-info text-center">
+      <i class="fas fa-info-circle"></i> You have already voted in this game!
+      <a href="/game/<%= @game.token %>/results" class="btn btn-info ml-3">View Results</a>
+    </div>
+  <% else %>
+    <div class="text-center mb-4">
+      <p class="text-muted">Read the three statements below and choose which one you think is the LIE.</p>
+      <p class="text-muted">Remember: 2 statements are TRUE, 1 statement is a LIE.</p>
+    </div>
+    
+    <%= form_with url: "/game/#{@game.token}/vote", method: :post, local: true do |form| %>
+      <div class="form-group">
+        <%= form.label :employee_name, "Your Name", class: "form-label" %>
+        <%= form.text_field :employee_name, class: "form-control", 
+            value: @employee_name, placeholder: "Enter your name to vote" %>
+      </div>
+      
+      <div class="grid grid-3">
+        <% @game.statements.shuffle.each_with_index do |statement, index| %>
+          <div class="statement-card" onclick="selectStatement(<%= index %>)">
+            <h4>Statement <%= index + 1 %></h4>
+            <p><%= statement[:content] %></p>
+            <div class="text-center">
+              <%= form.radio_button :statement_id, statement[:id], 
+                  class: "statement-radio", id: "statement_#{index}" %>
+              <label for="statement_<%= index %>" class="btn btn-outline">
+                <i class="fas fa-check"></i> This is the LIE
+              </label>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="text-center mt-4">
+        <%= form.submit "Submit Vote", class: "btn btn-success btn-lg", 
+            onclick: "return validateForm()" %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<script>
+function selectStatement(index) {
+  // Remove selection from all cards
+  document.querySelectorAll('.statement-card').forEach(card => {
+    card.classList.remove('selected');
+  });
+  
+  // Select the clicked card
+  document.querySelectorAll('.statement-card')[index].classList.add('selected');
+  
+  // Check the radio button
+  document.getElementById('statement_' + index).checked = true;
+}
+
+function validateForm() {
+  const employeeName = document.querySelector('input[name="employee_name"]').value.trim();
+  const selectedStatement = document.querySelector('input[name="statement_id"]:checked');
+  
+  if (!employeeName) {
+    alert('Please enter your name to vote.');
+    return false;
+  }
+  
+  if (!selectedStatement) {
+    alert('Please select which statement you think is the LIE.');
+    return false;
+  }
+  
+  return true;
+}
+</script>

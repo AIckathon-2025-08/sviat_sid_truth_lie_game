@@ -1,0 +1,54 @@
+<div class="card">
+  <div class="text-center mb-4">
+    <h1><i class="fas fa-plus-circle"></i> Create New Game</h1>
+    <p class="text-muted">Set up a new Truth or Lie game for your town hall</p>
+  </div>
+  
+  <%= form_with url: games_path, method: :post, local: true do |form| %>
+    <div class="form-group">
+      <%= form.label :candidate_name, "Candidate Name", class: "form-label" %>
+      <%= form.text_field :candidate_name, name: "game_session[candidate_name]", class: "form-control", placeholder: "Enter candidate's name" %>
+    </div>
+    
+    <div class="form-group">
+      <%= form.label :candidate_photo, "Candidate Photo URL", class: "form-label" %>
+      <%= form.text_field :candidate_photo, name: "game_session[candidate_photo]", class: "form-control", placeholder: "https://example.com/photo.jpg" %>
+      <small class="text-muted">Enter a URL to the candidate's photo</small>
+    </div>
+    
+    <h3 class="mt-4 mb-3">Game Statements</h3>
+    <p class="text-muted mb-4">Create 3 statements - 2 truths and 1 lie. The order will be randomized for players.</p>
+    
+    <% 3.times do |index| %>
+      <div class="card mb-3">
+        <h4>Statement <%= index + 1 %></h4>
+        
+        <div class="form-group">
+          <%= form.label "statement_#{index + 1}_content", "Statement Content", class: "form-label" %>
+          <%= form.text_area "statement_#{index + 1}_content", name: "game_session[statements_attributes][#{index}][content]", class: "form-control", rows: 3, 
+              placeholder: "Enter statement #{index + 1}" %>
+        </div>
+        
+        <div class="form-group">
+          <%= form.label "statement_#{index + 1}_truth", "Is this statement true?", class: "form-label" %>
+          <div>
+            <label class="form-label">
+              <%= form.radio_button "statement_#{index + 1}_truth", true, name: "game_session[statements_attributes][#{index}][is_truth]" %>
+              <i class="fas fa-check-circle text-success"></i> Truth
+            </label>
+            <label class="form-label ml-3">
+              <%= form.radio_button "statement_#{index + 1}_truth", false, name: "game_session[statements_attributes][#{index}][is_truth]" %>
+              <i class="fas fa-times-circle text-danger"></i> Lie
+            </label>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    
+    <div class="text-center">
+      <%= form.submit "Create Game", class: "btn btn-success btn-lg" %>
+      <a href="/" class="btn btn-outline btn-lg ml-3">Cancel</a>
+    </div>
+  <% end %>
+</div>
+
