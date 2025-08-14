@@ -19,15 +19,10 @@ The "Two Truths and a Lie" game is a classic icebreaker that challenges particip
 <img width="1479" height="956" alt="Screenshot 2025-08-14 at 17 18 37" src="https://github.com/user-attachments/assets/137155b3-ea02-41e6-ad45-6f66454566e0" />
 
 ## 🎥 Demo Video
+Full quality video https://drive.google.com/file/d/1PH0E9LcYALCqq1_SUEldoqmBOjBArte4/view?usp=sharing
 
-A demo video will be created showing the game in action. The video should demonstrate:
+![Screen Recording 2025-08-14 at 17 21 14](https://github.com/user-attachments/assets/9da5b1d5-c85a-4220-b5ba-6d4f11f44bb5)
 
-- Creating a new game as an admin
-- Employees participating in voting
-- Real-time results updates
-- Overall user experience and flow
-
-*See how easy it is to create games, collect votes, and reveal results in real-time.*
 
 ## ✨ Features
 
