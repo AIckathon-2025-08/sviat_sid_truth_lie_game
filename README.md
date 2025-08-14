@@ -11,6 +11,27 @@ The "Two Truths and a Lie" game is a classic icebreaker that challenges particip
 - **Corporate Events**: Engage large groups in interactive activities
 - **Remote Teams**: Connect distributed teams through fun challenges
 
+## 📱 Screenshots
+
+Screenshots will be added to the `screenshots/` directory. See `screenshots/README.md` for details on how to capture and add them.
+
+### Required Screenshots
+- **Homepage**: Showing active games and navigation
+- **Game Creation**: Admin interface for setting up new games
+- **Voting Interface**: Player voting experience with statements
+- **Results Dashboard**: Live results with charts and statistics
+
+## 🎥 Demo Video
+
+A demo video will be created showing the game in action. The video should demonstrate:
+
+- Creating a new game as an admin
+- Employees participating in voting
+- Real-time results updates
+- Overall user experience and flow
+
+*See how easy it is to create games, collect votes, and reveal results in real-time.*
+
 ## ✨ Features
 
 ### 🎮 **Game Management**
@@ -147,40 +168,6 @@ GameSession
 └── created_at (datetime)
 ```
 
-## 🔧 Configuration
-
-### Environment Variables
-- `RAILS_ENV`: Application environment (development/production)
-- `RAILS_MASTER_KEY`: Master key for production deployments
-- `DATABASE_URL`: Database connection string
-
-### Session Setup
-```bash
-# Seed with sample data (optional)
-docker-compose -f docker-compose.dev.yml exec web rails db:seed
-```
-
-## 📱 Screenshots
-
-Screenshots will be added to the `screenshots/` directory. See `screenshots/README.md` for details on how to capture and add them.
-
-### Required Screenshots
-- **Homepage**: Showing active games and navigation
-- **Game Creation**: Admin interface for setting up new games
-- **Voting Interface**: Player voting experience with statements
-- **Results Dashboard**: Live results with charts and statistics
-
-## 🎥 Demo Video
-
-A demo video will be created showing the game in action. The video should demonstrate:
-
-- Creating a new game as an admin
-- Employees participating in voting
-- Real-time results updates
-- Overall user experience and flow
-
-*See how easy it is to create games, collect votes, and reveal results in real-time.*
-
 ## 🚀 Deployment
 
 ### Production Deployment
@@ -239,9 +226,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Need help? Here are some resources:
 
-- **Issues**: [GitHub Issues](https://github.com/your-repo/issues)
-- **Documentation**: [Wiki](https://github.com/your-repo/wiki)
-- **Email**: support@yourcompany.com
+- **Issues**: [GitHub Issues](https://github.com/AIckathon-2025-08/sviat_sid_truth_lie_game/issues)
+- **Email**: sviatoslav_sicelnykov@epam.com
 
 ---
 
